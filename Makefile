@@ -1,6 +1,7 @@
 build:
 	docker build --rm -f Dockerfile --tag mycompany .
 #	docker build --rm -f web-uclm/Dockerfile --tag mycompany-web web-uclm
+	docker build --rm -f router/Dockerfile --tag mycompany-router router
 	docker build --rm -f uclm-auth/Dockerfile --tag mycompany-auth uclm-auth
 	docker build --rm -f uclm-files/Dockerfile --tag mycompany-files uclm-files
 
@@ -17,10 +18,10 @@ containers: build network
 #		--network dmz mycompany-web
 
 	docker run --rm -ti --cap-add=NET_ADMIN -d --name uclm-auth --hostname uclm-auth --ip 10.0.2.3 \
-		--network srv mycomany-auth
+		--network internal mycompany-auth
 
 	docker run --rm -ti --cap-add=NET_ADMIN -d --name uclm-files --hostname uclm-files --ip 10.0.2.4 \
-		--network srv mycompany-files
+		--network internal mycompany-files
 
 
 remove:
