@@ -10,17 +10,12 @@ DB_PATH = "db"
 
 class File_Management(Resource):
 
-    def get(self, username, doc_id):
-
+    def get(self, doc_id):
         base_url = "db/{}".format(doc_id)
-
         #check if file exists
         if not os.path.exists(base_url):
             return "File not found", 404
-
         f = open(base_url,'r')
         content = f.read()
-
         f.close()
-
         return content

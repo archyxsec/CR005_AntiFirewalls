@@ -4,7 +4,6 @@ from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 
 import file_management
-import all_docs
 
 app = Flask(__name__)
 api = Api(app)

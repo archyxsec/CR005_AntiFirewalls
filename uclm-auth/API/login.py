@@ -4,13 +4,12 @@ from flask_restful import Resource, Api
 import bcrypt
 import hashlib
 import base64
-import tokens
 import json
 
 USERS_FILE = "users/users.json"
 
 class Login(Resource):
-    def post(self):
+    def get(self):
 
         username = request.args['email']
         password = request.args['password']

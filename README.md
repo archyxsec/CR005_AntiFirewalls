@@ -1,17 +1,8 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <h1 align="center">AntiFirewalls PoC</h1>
 </p>
-
-<!-- ABOUT THE PROJECT -->
-## Sobre El Proyecto
-
-![Product Name Screen Shot](https://user-images.githubusercontent.com/52278758/148537218-b215d382-d8b0-4098-bf2e-b8f8a1ab6677.png)
 
 PoC de Reto Telefónica
 
