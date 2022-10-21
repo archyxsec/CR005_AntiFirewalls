@@ -45,6 +45,9 @@ iptables -A FORWARD -i eth0 -o eth1 -p tcp --dport 80 -j ACCEPT
 
 #INPUTS
 iptables -A INPUT -p tcp --dport 22 -i eth2 -s 10.0.3.3 -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -i eth2 -s 10.0.2.3 -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -i eth2 -s 10.0.2.4 -j ACCEPT
+iptables -A INPUT -p tcp --sport 22 -s 10.0.2.0/24 -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -s 172.17.0.1 -j ACCEPT
 iptables -A INPUT -p tcp --sport 80 -i eth1 -j ACCEPT
 # for accept debian sources updates

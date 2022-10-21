@@ -8,7 +8,7 @@ iptables -P OUTPUT ACCEPT
 iptables -A INPUT -p tcp --dport 80 -s 10.0.1.4 -j ACCEPT
 iptables -A INPUT -p tcp --sport 80 -s 10.0.2.3 -j ACCEPT
 
-iptables -A INPUT -p tcp --dport 22 -s 10.0.3.3 -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -s 10.0.2.2 -j ACCEPT
 
 iptables -A INPUT -p udp -j ACCEPT
 iptables -A INPUT -p tcp -m state --state RELATED,ESTABLISHED -j ACCEPT
