@@ -4,21 +4,21 @@
   <h1 align="center">AntiFirewalls PoC</h1>
 </p>
 
-PoC correspondiente al reto POC CIBERSEGURIDAD: EJECUCIÓN DE CÓDIGO REMOTO EN KERNEL DE LINUX A TRAVÉS DE WIFI de la HackForGood de Telefónica 2022.
+<b>Prueba de concepto (PoC) correspondiente al reto "POC CIBERSEGURIDAD: EJECUCIÓN DE CÓDIGO REMOTO EN KERNEL DE LINUX A TRAVÉS DE WIFI" de la competición HackForGood de Telefónica en su edición de octubre de 2022, para la participación del equipo "Anti Firewalls" (código "CR005") de la sede de Ciudad Real (Universidad de Castilla-La Mancha) conformado por Tomás Jesús García López, Sergio Jiménez Roncero, Alberto Vázquez Martínez, Paulino de la Fuente Lizcano y Marwa Barbou.</b>
 
-En esta Prueba de Concepto se ha montado una infraestructura real de red mediante contenedores dockers donde uno de los nodos (El punto de acceso) es vulnerable a CVE-2022-42719.
+En esta Prueba de Concepto se ha montado una infraestructura real de red mediante contenedores Dockers donde uno de los nodos (el punto de acceso) es vulnerable a CVE-2022-42719.
 
-El objetivo de esta prueba de concepto es demostrar el impacto que tendría en la sociedad el hecho de tener un nodo vulnerable en la infraestructura de red en la que se controla en todo momento el tráfico proveniente del exterior, restringiendo dos zonas: dmz y internal.
+El objetivo de esta prueba de concepto es demostrar empíricamente el impacto que tendría en la sociedad el hecho de tener un nodo vulnerable en la infraestructura de red, en la que se controla en todo momento el tráfico proveniente del exterior, identificando dos zonas: DMZ, e INTERNAL.
 
-En el segmento de red **dmz** encontramos nodos que son visibles al exterior en nuestra infraestructura un servidor web, en cambio en el segmento de red **internal** encontramos los nodos privados con documentos confidenciales para la empresa como la base de datos de usuarios y documentos de empleados por ejemplo.
+En el segmento de red **DMZ** encontramos nodos que son visibles al exterior en nuestra infraestructura de servidor web. En cambio en el segmento de red **INTERNAL** encontramos los nodos privados con documentos confidenciales para la empresa como la base de datos de usuarios y documentos de empleados, por ejemplo.
 
-El objetivo del firewall de esta red que se encuentra en el router es controlar el tráfico y solo permitir que entre a la red tráfico cuyo destino es el servidor web, es decir en ningún momento se debe permitir acceder a los servidores de autenticación y de ficheros directamente. Aunque el servidor web pueda comunicarse con la red interna de la empresa, en ningún momento un usuario fuera de la red debería visualizar estos nodos.
+El objetivo del firewall de esta red que se encuentra en el router es controlar el tráfico y solamente permitir que entre a la red tráfico cuyo destino es el servidor web (segmento DMZ). Es decir en ningún momento se debe permitir acceder a los servidores de autenticación y de ficheros directamente. Aunque el servidor web pueda comunicarse con la red interna de la empresa, en ningún momento un usuario fuera de la red debería visualizar estos nodos.
 
-El impacto consiste en que cuando se logra ejecución de comandos remota en el nodo **router** el atacante tiene acceso a la red interna de la empresa, ya que el router esta conectado a ambos segmentos de red (dmz y internal), lo cual podría visualizar las direcciones de todos los nodos pertenecientes a ambos segmentos de red y estudiar servicios y versiones para intentar explotar algún fallo de seguridad con el objetivo de violar la integridad e integridad de los activos de la empresa.
+El impacto consiste en que cuando se logran ejecutar comandos de manera remota en el nodo **router**, el atacante tiene acceso a la red interna de la empresa, ya que el router está conectado a ambos segmentos de red (DMZ e INTERNAL), lo cual podría visualizar las direcciones de todos los nodos pertenecientes a ambos segmentos de red y estudiar servicios y versiones para intentar explotar algún fallo de seguridad con el objetivo de violar la integridad, confidencialidad y disponibilidad de los activos de la empresa.
 
 En nuestra prueba de concepto, ya que se ha realizado en 24 horas, los nodos de autenticación y de datos no tienen ningún fallo, simplemente un usuario cuyas credenciales son débiles. El atacante podría realizar un ataque por fuerza bruta con herramientas como **crackmapexec** o **hydra** y obtener las credenciales del usuario **dev** para el servicio ssh.
 
-El esquema de nuestra infraestructura red es el siguiente:
+El esquema de nuestra infraestructura de red es el siguiente:
 
 ![image](https://user-images.githubusercontent.com/52278758/197303467-936c185a-d6bf-4a81-b727-031dec79fd83.png)
 
@@ -76,7 +76,7 @@ El esquema de nuestra infraestructura red es el siguiente:
 
   ![image](https://user-images.githubusercontent.com/52278758/197303791-bacb7e56-bc3c-4105-9fac-da940e1dc363.png)
   
-  7. Por otro lado el usuario puede comprobar como no existe acceso directamente a los recursos internos, además que tenemos acceso a esos segmentos de red ya que nuestro equipo hace de router de los distintos contenedores por defecto.
+  7. Por otro lado el usuario puede comprobar cómo no existe acceso directamente a los recursos internos, además de que tenemos acceso a esos segmentos de red ya que nuestro equipo hace de router de los distintos contenedores por defecto.
   
   ![image](https://user-images.githubusercontent.com/52278758/197303886-7bead531-125d-4fd7-991c-72bc9a00bba2.png)
   
