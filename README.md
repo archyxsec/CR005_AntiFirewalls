@@ -6,7 +6,7 @@
 
 <b>Prueba de concepto (PoC) correspondiente al reto "POC CIBERSEGURIDAD: EJECUCIÓN DE CÓDIGO REMOTO EN KERNEL DE LINUX A TRAVÉS DE WIFI" de la competición HackForGood de Telefónica en su edición de octubre de 2022, para la participación del equipo "Anti Firewalls" (código "CR005") de la sede de Ciudad Real (Universidad de Castilla-La Mancha) conformado por Tomás Jesús García López, Sergio Jiménez Roncero, Alberto Vázquez Martínez, Paulino de la Fuente Lizcano y Marwa Barbou.</b>
 
-En esta Prueba de Concepto se ha montado una infraestructura real de red mediante contenedores Dockers donde uno de los nodos (el punto de acceso) es vulnerable a CVE-2022-42719. Para que el punto de acceso sea vulnerable se tiene que trabajar desde una máquina virtual con el siguiente kernel: () 
+En esta Prueba de Concepto se ha montado una infraestructura real de red mediante contenedores Dockers donde uno de los nodos (el punto de acceso) es vulnerable a CVE-2022-42719. Para que el punto de acceso sea vulnerable se tiene que trabajar desde una máquina virtual con el siguiente kernel: [Kernel versión 5.19.8](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tag/?h=v5.19.8) 
 
 El objetivo de esta prueba de concepto es demostrar empíricamente el impacto que tendría en la sociedad el hecho de tener un nodo vulnerable en la infraestructura de red, en la que se controla en todo momento el tráfico proveniente del exterior, identificando dos zonas: DMZ, e INTERNAL.
 
