@@ -22,8 +22,7 @@ Como solución se proponen dos, la primera consiste en instalar el parche de seg
 
 El esquema de nuestra infraestructura de red es el siguiente:
 
-![image](https://user-images.githubusercontent.com/52278758/197303467-936c185a-d6bf-4a81-b727-031dec79fd83.png)
-
+![image](https://user-images.githubusercontent.com/52278758/197327502-46e54dc9-d61a-4956-8352-4fb06af7abd1.png)
 
 ### Realizado con
 
