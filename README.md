@@ -50,7 +50,7 @@ El esquema de nuestra infraestructura de red es el siguiente:
    ```sh
    git clone https://github.com/0xArchy/CR005_AntiFirewalls.git
    ```
-3. Revisar el fichero real_hosts, básicamente añadir  `172.17.0.2     my-uclm.es  www.my-uclm.es.local` en tu /etc/hosts, aunque directamente trabajaremos con direcciones IP.
+3. Revisar el fichero real_hosts, básicamente añadir  `172.17.0.2     my-uclm.es  www.my-uclm.es` en tu /etc/hosts, aunque directamente trabajaremos con direcciones IP.
 4. Compilar el proyecto.
    ```sh
    sudo make
