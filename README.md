@@ -6,7 +6,7 @@
 
 <b>Prueba de concepto (PoC) correspondiente al reto "POC CIBERSEGURIDAD: EJECUCIÓN DE CÓDIGO REMOTO EN KERNEL DE LINUX A TRAVÉS DE WIFI" de la competición HackForGood de Telefónica en su edición de octubre de 2022, para la participación del equipo "Anti Firewalls" (código "CR005") de la sede de Ciudad Real (Universidad de Castilla-La Mancha) conformado por Tomás Jesús García López, Sergio Jiménez Roncero, Alberto Vázquez Martínez, Paulino de la Fuente Lizcano y Marwa Barbou.</b>
 
-En esta Prueba de Concepto se ha montado una infraestructura real de red mediante contenedores Dockers donde uno de los nodos (el punto de acceso) es vulnerable a CVE-2022-42719.
+En esta Prueba de Concepto se ha montado una infraestructura real de red mediante contenedores Dockers donde uno de los nodos (el punto de acceso) es vulnerable a CVE-2022-42719. Para que el punto de acceso sea vulnerable se tiene que trabajar desde una máquina virtual con el siguiente kernel: () 
 
 El objetivo de esta prueba de concepto es demostrar empíricamente el impacto que tendría en la sociedad el hecho de tener un nodo vulnerable en la infraestructura de red, en la que se controla en todo momento el tráfico proveniente del exterior, identificando dos zonas: DMZ, e INTERNAL.
 
@@ -17,6 +17,8 @@ El objetivo del firewall de esta red que se encuentra en el router es controlar 
 El impacto consiste en que cuando se logran ejecutar comandos de manera remota en el nodo **router**, el atacante tiene acceso a la red interna de la empresa, ya que el router está conectado a ambos segmentos de red (DMZ e INTERNAL), lo cual podría visualizar las direcciones de todos los nodos pertenecientes a ambos segmentos de red y estudiar servicios y versiones para intentar explotar algún fallo de seguridad con el objetivo de violar la integridad, confidencialidad y disponibilidad de los activos de la empresa.
 
 En nuestra prueba de concepto, ya que se ha realizado en 24 horas, los nodos de autenticación y de datos no tienen ningún fallo, simplemente un usuario cuyas credenciales son débiles. El atacante podría realizar un ataque por fuerza bruta con herramientas como **crackmapexec** o **hydra** y obtener las credenciales del usuario **dev** para el servicio ssh.
+
+Como solución se proponen dos, la primera consiste en instalar el parche de seguridad que indican los desarrolladores. La segunda y más creativa consiste en implementar un nodo intermediario, por ejemplo en el segmento de red de la **dmz** el cual este a la escucha de todo el tráfico de red y en base a una serie de reglas pueda notificar de paquetes fuera de lo común, por ejemplo comunicación innecesaria entre **dmz** y **internal** o paquetes directamente del router a la zona **internal**. A este nodo se le llama comúnmente WAF (Web Application Firewall).
 
 El esquema de nuestra infraestructura de red es el siguiente:
 
